@@ -1,0 +1,41 @@
+{
+  "name": "git-project-management",
+  "version": "1.0.0",
+  "description": "Git project management",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.7",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.14.16",
+    "@types/require-all": "^3.0.1",
+    "nodemon": "^2.0.4",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.7"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^9.0.6",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "event-dispatch": "^0.4.1",
+    "express": "^4.17.1",
+    "fs-extra": "^9.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "node-read-yaml": "^1.0.1",
+    "pm2": "^4.4.1",
+    "reflect-metadata": "^0.1.13",
+    "require-all": "^3.0.0",
+    "rimraf": "^3.0.2",
+    "sqlite3": "^5.0.0",
+    "typeorm": "0.2.25",
+    "yaml": "^1.10.0"
+  },
+  "scripts": {
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+    "start:dev": "nodemon --config \"./nodemon.json\"/",
+    "dev": "ts-node src/index.ts",
+    "build": "rimraf ./build && tsc && cp .env ./build/.env",
+    "prestart": "npm run build",
+    "start": "cd ./build && pm2 start ./src/index.js -i 2 --name GitProjectManagement"
+  }
+}
